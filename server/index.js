@@ -2,6 +2,7 @@ const dotenv=require("dotenv")
 dotenv.config()
 const cors=require("cors")
 const express=require("express")
+const path = require("path") // Import path for serving static files
 const app=express()
 const connectDb=require("./config/db.js")
 const cookieParser = require("cookie-parser")
@@ -25,9 +26,10 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
+// Middleware to serve static files from the uploads directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve files from the uploads directory
 
-
-//Routes
+// Routes
 app.use("/api/auth",authRouter)
 app.use("/api/patient",patientRouter)
 app.use("/api/ai",aiRouter)

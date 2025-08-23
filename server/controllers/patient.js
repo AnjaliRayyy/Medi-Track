@@ -41,8 +41,8 @@ async function handleFetchingRecordById(req,res){
 
 async function handleFetchingLabReports(req,res){
     try{
-        const abhaId = req.params.abhaId;
-        const labReport=await LabReport.findOne({abhaId:abhaId})
+        const userId = req.params.userId;
+        const labReport=await LabReport.findOne({userId:userId})
         if(labReport) return res.json(labReport)
         else return res.json({message : "No Lab Reports found"})
     }

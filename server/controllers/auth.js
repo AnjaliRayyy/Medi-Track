@@ -30,14 +30,20 @@ async function handleSignUp(req, res) {
         if (existingUser) {
             return res.status(409).json({ message: "User already exists! Please Login!" })
         }
-        const exists = patientDetails.find(patient => patient.abhaId === abhaId)
+        const exists = patientDetails.find(patient => patient.abhaId === abhaId);
+        if (!exists) {
+            return res.status(400).json({ message: "Invalid ABHA ID" });
+        }
+        // exists.userId = user._id; // Assign userId directly to the existing patient object
         // console.log(exists)
         if (!exists) {
             return res.status(400).json({ message: "Invalid ABHA ID" })
         }
         const user = new User({ name, email, abhaId,password });
         await user.save();
-
+        // exists=[...exists,{userId : user._id }]
+        
+        
         //Sending welcome email
         await sendEmail(
             user.email,
@@ -46,38 +52,41 @@ async function handleSignUp(req, res) {
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
           <h2 style="color: #2c7be5;">Hello ${user.name},</h2>
           <p>Welcome to <strong>MediTrack</strong>! 🎉 Your account has been created successfully.</p>
-
+          
           <p>With MediTrack, you can:</p>
           <ul>
-            <li>📂 Securely store and access your medical history anytime</li>
-            <li>🏥 Link your ABHA ID for verified health records</li>
-            <li>🔒 Stay in control of your health data with privacy-first access</li>
-            <li>📊 Track your treatments, medications, and doctor visits easily</li>
+          <li>📂 Securely store and access your medical history anytime</li>
+          <li>🏥 Link your ABHA ID for verified health records</li>
+          <li>🔒 Stay in control of your health data with privacy-first access</li>
+          <li>📊 Track your treatments, medications, and doctor visits easily</li>
           </ul>
-
+          
           <p><strong>Your login details:</strong></p>
           <p>Email: ${user.email}</p>
           <p>ABHA ID (last 4 digits): ****${abhaId.slice(-4)}</p>
-
+          
           <a href="https://meditrack.com/login" style="display:inline-block;margin-top:15px;padding:10px 20px;background:#2c7be5;color:white;text-decoration:none;border-radius:5px;">
             🔗 Login to MediTrack
-          </a>
+            </a>
 
-          <p style="margin-top:20px;">If this wasn’t you, please contact us immediately at <a href="mailto:support@meditrack.com">support@meditrack.com</a>.</p>
-          <p>Stay healthy,<br><strong>Team MediTrack</strong></p>
-          <p style="color:#2c7be5;font-style:italic;">💙 Your health, your control.</p>
-        </div>
-      `
+            <p style="margin-top:20px;">If this wasn’t you, please contact us immediately at <a href="mailto:support@meditrack.com">support@meditrack.com</a>.</p>
+            <p>Stay healthy,<br><strong>Team MediTrack</strong></p>
+            <p style="color:#2c7be5;font-style:italic;">💙 Your health, your control.</p>
+            </div>
+            `
         );
-
+        
         //<--------------------Saving Patient details in DB---------------->
+        exists.userId=user._id;
         const patient = new Patient(exists)
         await patient.save();
-
+        
         //<---------------------Saving Patient MedicalRecords in DB--------------------->
         const record = medicalRecordDetails.find(record => record.abhaId === abhaId)
         // console.log(record)
         if (record) {
+            record.userId=user._id;
+            // record=[...record,{userId : user._id }]
             const medicalRecord = new MedicalRecord(record)
             await medicalRecord.save();
         }
@@ -86,6 +95,8 @@ async function handleSignUp(req, res) {
         const labReport = labReportDetails.find(labReport => labReport.abhaId === abhaId)
         // console.log(labReport)
         if (labReport) {
+            labReport.userId=user._id;
+            // labReport=[...labReport,{userId : user._id }]
             const lab = new LabReport(labReport)
             await lab.save();
         }
@@ -156,4 +167,5 @@ async function handleLogout(req,res){
     res.clearCookie("uid");
     res.json({ message: "Logged out successfully" });
 }
+module.exports = { handleSignUp, handleLogin, handleGetMe, handleLogout }
 module.exports = { handleSignUp, handleLogin, handleGetMe, handleLogout }

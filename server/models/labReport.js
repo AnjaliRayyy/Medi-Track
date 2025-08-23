@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const labReportSchema = new mongoose.Schema({
+  userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    },
   abhaId: { type: String, required: true },
   reports: [{
     reportId: String,

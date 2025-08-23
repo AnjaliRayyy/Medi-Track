@@ -1,6 +1,11 @@
 const mongoose=require('mongoose')
 
 const medicalRecordSchema = new mongoose.Schema({
+  userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    },
   abhaId: { type: String, required: true },
   records:[{
     visitId: String,
