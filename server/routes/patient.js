@@ -2,27 +2,15 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const cloudinary=require("../config/cloudinary.js")
 const router = express.Router();
 const {handleFetchingPatientDetails,handleFetchingRecords,handleFetchingRecordById,handleFetchingLabReports,handleFetchingLabReportById}=require('../controllers/patient.js');
 const userUploads = require("../models/userUploads.js");
 
-// Configure multer for local file storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '../uploads');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    // Generate unique filename with timestamp
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + '-' + file.originalname);
-  }
-});
+const upload = multer({ dest: "uploads/" }); // temp storage
 
-const upload = multer({ storage: storage });
+// Configure multer for local file storage
+
 
 //<-------------------Patient Routes----------------------->
 router.get("/:userId",handleFetchingPatientDetails)
@@ -38,6 +26,7 @@ router.route("/:userId/reports/:reportId").get(handleFetchingLabReportById)
 
 //<------------Patient Uploads Routes--------------->
 // router.route("/:userId/uploads").
+// Upload report
 router.post("/:userId/upload-report", upload.single("report"), async (req, res) => {
   try {
     const { userId } = req.params;
@@ -45,16 +34,18 @@ router.post("/:userId/upload-report", upload.single("report"), async (req, res) 
 
     if (!file) return res.status(400).json({ message: "No file uploaded" });
 
-    // Create local file URL
-    const fileUrl = `/uploads/${file.filename}`;
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(file.path, {
+      folder: "medical_reports",
+    });
 
     const newReport = new userUploads({
-      userId,
-      fileName: file.originalname,
-      fileUrl,
+      userId: userId,
+      reportName: file.originalname, // Add reportName
+      reportUrl: result.secure_url,   // Add reportUrl
     });
-    await newReport.save();
 
+    await newReport.save();
     res.json({ message: "Report uploaded successfully", report: newReport });
   } catch (err) {
     console.error("Upload error:", err);

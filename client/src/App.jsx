@@ -16,7 +16,7 @@ import Register from "./pages/Register";
 
 export default function App() {
   const { user } = useContext(AuthContext);
-  const patientId = user ? user.userId : null; // Check if user is not null
+  const userId = user ? user.userId : null; // Check if user is not null
   // console.log(user);
 
   return (
@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route 
           path="/reports" 
-          element={<Reports patientId={patientId} />} 
+          element={<Reports userId={userId} />} 
         />
         <Route path="/ai-analysis" element={<AIAnalysis />} />
         <Route path="/hospitals" element={<Hospitals />} />
