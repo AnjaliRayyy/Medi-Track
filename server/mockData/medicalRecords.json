@@ -1,0 +1,62 @@
+[
+  {
+    "abhaId": "1234-5678-9101",
+    "records": [
+      {
+        "visitId": "VST-2025-001",
+        "date": "2025-01-15",
+        "doctor": "Dr. Ananya Mehta",
+        "specialization": "General Medicine",
+        "diagnosis": "Type 2 Diabetes - Routine Checkup",
+        "prescriptions": [
+          { "medicine": "Metformin 500mg", "dosage": "Twice daily" },
+          { "medicine": "Atorvastatin 10mg", "dosage": "Once daily" }
+        ],
+        "notes": "Patient advised to monitor blood sugar daily and maintain diet."
+      },
+      {
+        "visitId": "VST-2025-002",
+        "date": "2025-03-02",
+        "doctor": "Dr. Prakash Nair",
+        "specialization": "Cardiology",
+        "diagnosis": "Mild Hypertension",
+        "prescriptions": [
+          { "medicine": "Amlodipine 5mg", "dosage": "Once daily" }
+        ],
+        "notes": "Regular exercise and low-salt diet recommended."
+      }
+    ]
+  },
+  {
+    "abhaId": "2345-6789-1011",
+    "records": [
+      {
+        "visitId": "VST-2025-101",
+        "date": "2025-02-12",
+        "doctor": "Dr. Suresh Gupta",
+        "specialization": "Pulmonology",
+        "diagnosis": "Asthma Flare-up",
+        "prescriptions": [
+          { "medicine": "Salbutamol Inhaler", "dosage": "As needed" }
+        ],
+        "notes": "Avoid dust and pollution, regular follow-up in 1 month."
+      }
+    ]
+  },
+  {
+    "abhaId": "3456-7891-0112",
+    "records": [
+      {
+        "visitId": "VST-2025-201",
+        "date": "2025-01-20",
+        "doctor": "Dr. Neha Kulkarni",
+        "specialization": "Cardiology",
+        "diagnosis": "High Cholesterol",
+        "prescriptions": [
+          { "medicine": "Rosuvastatin 20mg", "dosage": "Once daily" }
+        ],
+        "notes": "Diet modification advised, recheck lipid profile in 3 months."
+      }
+    ]
+  }
+]

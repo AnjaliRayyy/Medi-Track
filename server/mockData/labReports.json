@@ -1,0 +1,57 @@
+[
+  {
+    "abhaId": "1234-5678-9101",
+    "reports": [
+      {
+        "reportId": "LAB-2025-001",
+        "date": "2025-01-14",
+        "testName": "HbA1c Test",
+        "result": "7.2%",
+        "normalRange": "Below 5.7%",
+        "status": "High",
+        "fileUrl": "https://example.com/reports/hba1c.pdf",
+        "uploadedBy": "Lab Technician"
+      },
+      {
+        "reportId": "LAB-2025-002",
+        "date": "2025-03-01",
+        "testName": "Blood Pressure Monitoring",
+        "result": "140/90 mmHg",
+        "normalRange": "120/80 mmHg",
+        "status": "High",
+        "fileUrl": "https://example.com/reports/bp-monitoring.pdf",
+        "uploadedBy": "Nurse"
+      }
+    ]
+  },
+  {
+    "abhaId": "2345-6789-1011",
+    "reports": [
+      {
+        "reportId": "LAB-2025-101",
+        "date": "2025-02-11",
+        "testName": "Pulmonary Function Test",
+        "result": "FEV1 = 65%",
+        "normalRange": "80-100%",
+        "status": "Low",
+        "fileUrl": "https://example.com/reports/pft.pdf",
+        "uploadedBy": "Respiratory Therapist"
+      }
+    ]
+  },
+  {
+    "abhaId": "3456-7891-0112",
+    "reports": [
+      {
+        "reportId": "LAB-2025-201",
+        "date": "2025-01-18",
+        "testName": "Lipid Profile",
+        "result": "Total Cholesterol: 250 mg/dL",
+        "normalRange": "Below 200 mg/dL",
+        "status": "High",
+        "fileUrl": "https://example.com/reports/lipid-profile.pdf",
+        "uploadedBy": "Lab Technician"
+      }
+    ]
+  }
+]
