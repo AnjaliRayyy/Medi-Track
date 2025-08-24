@@ -8,6 +8,9 @@ export default function Reports({ userId }) {
   // User uploaded reports (Cloudinary + backend)
   const [userUploads, setUserUploads] = useState([]);
 
+  // Track upload status
+  const [isUploading, setIsUploading] = useState(false);
+
   // Fetch ABDM mock data
   useEffect(() => {
     const mockAbdmData = [
@@ -42,6 +45,8 @@ export default function Reports({ userId }) {
     const formData = new FormData();
     formData.append("report", file); // Backend expects "report" field
 
+    setIsUploading(true); // Set uploading state to true
+
     try {
       const res = await fetch(`http://localhost:8000/api/patient/${userId}/upload-report`, {
         method: "POST",
@@ -56,6 +61,8 @@ export default function Reports({ userId }) {
       }
     } catch (err) {
       console.error("Upload failed:", err);
+    } finally {
+      setIsUploading(false); // Reset uploading state
     }
   };
 
@@ -113,7 +120,7 @@ export default function Reports({ userId }) {
 
           <label className="flex items-center bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer shadow hover:opacity-90 transition">
             <Upload className="mr-2" size={20} />
-            Upload Report
+            {isUploading ? "Uploading..." : "Upload Report"}
             <input type="file" hidden onChange={handleUpload} />
           </label>
         </div>

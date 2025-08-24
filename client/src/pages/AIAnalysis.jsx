@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Upload, Bot, FileText, Send } from "lucide-react";
+import { toast } from "react-toastify";
 
 export default function AIAnalysis() {
   const [activeTab, setActiveTab] = useState("chat");
   const [messages, setMessages] = useState([
-    { role: "ai", text: "Hello 👋 I'm your AI health assistant. How can I help you today?" },
+    {
+      role: "ai",
+      text: "Hello 👋 I'm your AI health assistant. How can I help you today?",
+    },
   ]);
   const [input, setInput] = useState("");
   const [file, setFile] = useState(null);
@@ -12,20 +16,36 @@ export default function AIAnalysis() {
   const [history, setHistory] = useState([]);
 
   // Handle chat send
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
     const userMessage = { role: "user", text: input };
     setMessages([...messages, userMessage]);
 
-    // Mock AI reply
-    const aiMessage = {
-      role: "ai",
-      text: "Based on your query, I suggest maintaining a healthy lifestyle and regular check-ups.",
-    };
-    setTimeout(() => {
-      setMessages((prev) => [...prev, aiMessage]);
-    }, 800);
+    try {
+      const response = await fetch("http://localhost:8000/api/ai/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          message: input,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        // toast.success(data.reply);
+        setMessages((prev) => [...prev, { role: "ai", text: data.reply }]);
+        setInput("")
+        console.log(data);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
 
     setInput("");
   };
@@ -149,7 +169,9 @@ export default function AIAnalysis() {
               <p className="font-medium text-blue-700">
                 Suggestion: {analysis.suggestion}
               </p>
-              <p className="text-sm text-gray-500 mt-2">Analyzed at {analysis.date}</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Analyzed at {analysis.date}
+              </p>
             </div>
           )}
 

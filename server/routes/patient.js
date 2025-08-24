@@ -21,8 +21,8 @@ router.route("/:userId/records/:visitId",handleFetchingRecordById)
 
 
 //<--------------------Lab Reports Routes--------------------->
-router.route("/:userId/reports").get(handleFetchingLabReports)
-router.route("/:userId/reports/:reportId").get(handleFetchingLabReportById)
+// router.route("/:userId/reports").get(handleFetchingLabReports)
+// router.route("/:userId/reports/:reportId").get(handleFetchingLabReportById)
 
 //<------------Patient Uploads Routes--------------->
 // router.route("/:userId/uploads").
