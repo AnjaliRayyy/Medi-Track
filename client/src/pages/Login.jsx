@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import LoginPageImg from "../assets/LoginPageImg.jpg"
 
 export default function Login() {
   const [email,setEmail]=useState("")
@@ -55,12 +56,12 @@ export default function Login() {
           and stay connected with trusted healthcare providers.
         </p>
         <motion.img
-          src="https://cdni.iconscout.com/illustration/premium/thumb/medical-report-5668910-4719330.png"
+          src={LoginPageImg}
           alt="health illustration"
-          className="mt-10 w-3/4"
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ repeat: Infinity, repeatType: "reverse", duration: 3 }}
+          className="mt-2 w-[60vh] h-[70vh]"
+          // initial={{ scale: 0.9 }}
+          // animate={{ scale: 1 }}
+          // transition={{ repeat: Infinity, repeatType: "reverse", duration: 3 }}
         />
       </motion.div>
 
