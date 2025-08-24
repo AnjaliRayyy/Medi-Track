@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import LoginPageImg from "../assets/LoginPageImg.jpg"
 
 export default function Register() {
   const [name,setName]=useState("")
@@ -62,12 +63,12 @@ export default function Register() {
           secure report storage, and nearby hospital suggestions.
         </p>
         <motion.img
-          src="https://cdni.iconscout.com/illustration/premium/thumb/medical-appointment-5668907-4719327.png"
+          src={LoginPageImg}
           alt="healthcare illustration"
-          className="mt-10 w-3/4"
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ repeat: Infinity, repeatType: "reverse", duration: 3 }}
+          className="mt-2 w-[60vh] h-[70vh]"
+          // initial={{ scale: 0.9 }}
+          // animate={{ scale: 1 }}
+          // transition={{ repeat: Infinity, repeatType: "reverse", duration: 3 }}
         />
       </motion.div>
 
@@ -152,6 +153,9 @@ export default function Register() {
             <Link to="/login" className="text-blue-600 hover:underline">
               Login here
             </Link>
+          </p>
+          <p className="text-gray-500 text-xs text-center mt-4">
+            Your data is safe and secure with us
           </p>
         </motion.div>
       </div>
