@@ -8,7 +8,7 @@
 - [📌 Overview](#-overview)
 - [🚀 Live Demo](#-live-demo)
 - [✨ Key Features](#-key-features)
-- [🛠️ Tech Stack](#️-tech-stack)
+- [🛠️ Tech Stack](#️--tech-stack)
 - [📂 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
 - [✅ Future Enhancements](#-future-enhancements)
