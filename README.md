@@ -1,4 +1,4 @@
-# 🏥 SwasthyaVault
+# 🏥 MediTrack
 
 *A secure and smart medical history tracker for patients*
 
@@ -32,7 +32,7 @@ In today's fragmented healthcare landscape, managing personal medical records is
 
 Check out the live version of the application here:
 
-**[MediTrack Live App](https://www.google.com/search?q=https://your-live-demo-url.com)**
+**[MediTrack Live App](https://medi-track-liard.vercel.app/)**
 
 -----
 
@@ -123,8 +123,8 @@ Follow these instructions to set up and run the project locally.
 ### 1\. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/MediTrack.git
-cd MediTrack
+git clone https://github.com/your-username/Medi-Track.git
+cd Medi-Track
 ```
 
 ### 2\. Configure Environment Variables
