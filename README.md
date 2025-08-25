@@ -2,27 +2,27 @@
 
 *A secure and smart medical history tracker for patients*
 
+-----
+
+## 📑 Table of Contents
+- [📌 Overview](#-overview)
+- [🚀 Live Demo](#-live-demo)
+- [✨ Key Features](#-key-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [📂 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [✅ Future Enhancements](#-future-enhancements)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [📜 License](#-license)
+
+ -----
+
 ## 📌 Overview
 
 In today's fragmented healthcare landscape, managing personal medical records is a challenge. Patients' histories are often scattered across various hospitals and clinics, making it difficult to access a complete health overview.
 
 **MediTrack** is a modern web application designed to solve this problem. It provides a centralized and secure platform for patients to store, manage, and analyze all their medical documents. By integrating with health services like **ABDM (Ayushman Bharat Digital Mission)** and allowing seamless personal uploads, MediTrack empowers users to take control of their health data. Its built-in AI assistant further demystifies complex medical reports, offering easy-to-understand insights.
 
------
-
-## 📖 Table of Contents
-
-  - [📌 Overview](https://www.google.com/search?q=%23-overview)
-  - [🚀 Live Demo](https://www.google.com/search?q=%23-live-demo)
-  - [✨ Key Features](https://www.google.com/search?q=%23-key-features)
-  - [📸 Screenshots](https://www.google.com/search?q=%23-screenshots)
-  - [🛠️ Tech Stack](https://www.google.com/search?q=%23%EF%B8%8F-tech-stack)
-  - [📂 Project Structure](https://www.google.com/search?q=%23-project-structure)
-  - [🚀 Getting Started](https://www.google.com/search?q=%23-getting-started)
-  - [✅ Future Enhancements](https://www.google.com/search?q=%23-future-enhancements)
-  - [🤝 How to Contribute](https://www.google.com/search?q=%23-how-to-contribute)
-  - [📜 License](https://www.google.com/search?q=%23-license)
-  - [👤 Contact](https://www.google.com/search?q=%23-contact)
 
 -----
 
@@ -75,7 +75,7 @@ Check out the live version of the application here:
 | **APIs / Communication**   | REST APIs (Express)                                                                   |
 | **Dev Tools**              | Git & GitHub, Postman/Insomnia (API testing), dotenv (env variables)                  |
 | **Build & Deployment**     | Vite (bundler), Docker (optional), Vercel/Netlify (frontend), Render/Heroku (backend) |
-                                                                                                                               |
+                                                                                                                              
 
 -----
 
